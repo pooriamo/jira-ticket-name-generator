@@ -49,12 +49,11 @@ const insertCalculatedBranchName = () => {
 const observe = () => {
     const targetNode = document.body;
 
-    const config = { childList: true };
+    const config = { childList: true, subtree: true };
 
     const callback = function (mutationsList) {
         for (const mutation of mutationsList) {
-            if (mutation.type === 'childList'
-                && document.getElementById('jira-issue-header')
+            if (document.getElementById('jira-issue-header')
                 && !document.getElementById('mblb-git-branch-name')
             ) {
                 insertCalculatedBranchName();
