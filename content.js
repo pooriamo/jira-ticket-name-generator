@@ -20,7 +20,8 @@ const getIssueType = () => {
 const getIssueTitle = () => {
     return document
         .querySelector('h1[data-test-id="issue.views.issue-base.foundation.summary.heading"]')
-        ?.textContent;
+        ?.textContent
+        .replace(/[:"'+=]/g, '');
 }
 
 const insertCalculatedBranchName = () => {
