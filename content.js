@@ -76,7 +76,7 @@ const getBranchName = () => {
     const issueCode = parseQueryString().selectedIssue || location.pathname.split('/').pop();
     return getIssueType() + issueCode + '-' + getIssueTitle().trim().toLowerCase()
         .replace(/\s+/g, '-')
-        .replace(/[^a-zA-Z0-9-.]/g, '')
+        .replace(/[^a-zA-Z0-9-_.]/g, '')
         .replace(/-+/g, '-');
 }
 
