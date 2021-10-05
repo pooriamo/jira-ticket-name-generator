@@ -1,9 +1,9 @@
 const parseQueryString = () => {
     const queryString = location.search.replace(/^\?/, '');
-    return queryString.split('&').reduce((acc, curr) => {
-        const [key, value] = curr.split('=');
-        acc[key] = value;
-        return acc;
+    return queryString.split('&').reduce((parsedQuery, currentKeyValuePair) => {
+        const [key, value] = currentKeyValuePair.split('=');
+        parsedQuery[key] = value;
+        return parsedQuery;
     }, {});
 }
 
