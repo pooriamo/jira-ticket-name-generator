@@ -80,13 +80,8 @@ const getBranchName = () => {
         .replace(/-+/g, '-');
 }
 
-if (
-    location.pathname.endsWith('RapidBoard.jspa')
-    || (location.pathname.startsWith('/browse/'))
-) {
-    window.addEventListener('load', () => {
-        insertCalculatedBranchName();
-        observe();
-    });
-}
+window.addEventListener('load', () => {
+    insertCalculatedBranchName();
+    observe();
+});
 
