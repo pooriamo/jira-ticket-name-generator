@@ -7,16 +7,6 @@ const parseQueryString = () => {
     }, {});
 }
 
-const getIssueType = () => {
-    const issueTypeButton = [...document.querySelectorAll('#jira-issue-header nav[aria-label=Breadcrumbs] button[aria-label]')].pop();
-
-    if (!issueTypeButton) {
-        return;
-    }
-
-    return issueTypeButton.attributes['aria-label'].value?.toLowerCase().startsWith('bug') ? 'fix/' : 'feat/';
-}
-
 const getIssueTitle = () => {
     return document
         .querySelector('h1[data-test-id="issue.views.issue-base.foundation.summary.heading"]')
@@ -74,7 +64,7 @@ const getBranchName = () => {
     }
 
     const issueCode = parseQueryString().selectedIssue || location.pathname.split('/').pop();
-    return getIssueType() + issueCode + '-' + getIssueTitle().trim().toLowerCase()
+    return issueCode + '-' + getIssueTitle().trim().toLowerCase()
         .replace(/\s+/g, '-')
         .replace(/[^a-zA-Z0-9-_.]/g, '')
         .replace(/-+/g, '-');
